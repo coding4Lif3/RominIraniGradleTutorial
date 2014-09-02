@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+
+task compileTask << {
+    System.out.println "compiling..."
+}
+
+task buildTask << {
+ System.out.println "building..."
+}
+
+defaultTasks 'buildTask'
