@@ -3,6 +3,7 @@
 
 apply plugin: 'java'
 
+//gradle assemble should generate a JAR file that is named as <name>-<version>.jar in the build/libs folder. In this case, it will be quote-1.0-FINAL.jar
 archivesBaseName = "quote"
 version = '1.0-FINAL'
 
