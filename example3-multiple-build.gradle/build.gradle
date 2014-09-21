@@ -1,0 +1,14 @@
+//as you can see we will continue to have the settings.gradle that includes all the projects
+
+subprojects {
+
+  apply plugin: "java"
+
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+     testCompile "junit:junit:4+"
+  }
+}
