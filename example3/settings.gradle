@@ -1,0 +1,2 @@
+//projects that comprise our 3 Java Projects
+include ":api", ":common", ":app"

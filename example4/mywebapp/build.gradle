@@ -1,0 +1,37 @@
+/*
+
+This is the first example of two that are present in samples/webApplication folder of your Gradle installation directory.
+The folder has two examples : quickstart, which is sort of what we have seen here. The other example customized is interesting
+and shows how you can move away from convention and specify exactly what files and from where it should take to build
+the Web application.
+
+As we had seen in the last episode, it is better to create multiple build.gradle files.
+In fact we have a structure like that:
+
+utils: This project contains some utility code and hence it will not depend on any of the other projects.
+The Java code in this project depends on an external Java Date Time Library : Joda Time.
+So we will need to have that dependency defined for this project.
+
+web: This is a Java Web Application project, that just has a simple Servlet and JSP file, along with the web.xml file.
+This project depends on the utils project, since it uses the utility Java class from there.
+Along with that dependency, it also has dependency on the Servlet Jar file that is needed to compile Java HTTP Servlet code.
+
+/mywebapp
+|- /utils
+     |- build.gradle
+     |- (Java Sources and files)
+|- /web
+     |- build.gradle
+     |- (Java Sources , JSPs and files)
+|- settings.gradle
+|- build.gradle
+
+*/
+
+//we are applying the Java plugin and also specifying that Maven Central be used for downloading any dependent libraries
+subprojects {
+   apply plugin : "java"
+   repositories {
+      mavenCentral()
+   }
+}

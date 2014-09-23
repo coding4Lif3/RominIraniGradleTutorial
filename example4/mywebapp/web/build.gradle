@@ -1,0 +1,45 @@
+//Here we are applying the War plugin. Additionally, we are making this project dependent on
+//the utils project and on the Servlet API 2.5 version, since we have some Servlets in this project
+
+//It's important to know that per the documentation “The War plugin extends the Java plugin to add support
+//for assembling web application WAR files. It disables the default JAR archive generation of the Java plugin and adds
+//a default WAR archive task.
+
+apply plugin: "war"
+
+/*
+
+It would be cool if we could not just build out the WAR file but also deploy it inside of the Jetty container
+and run the application for us to test out. That is exactly what the Jetty plugin can do for you.
+
+As we can see the new added Jetty tasks for the webapp are 3:
+- jettyRun - Uses your files as and where they are and deploys them to Jetty.
+- jettyRunWar - Assembles the webapp into a war and deploys it to Jetty.
+- jettyStop - Stops Jetty.
+
+now we can run: gradle jettyRunWar
+
+
+*/
+apply plugin: "jetty"
+
+dependencies {
+   compile project(":utils")
+   compile "javax.servlet:servlet-api:2.5"
+}
+
+//port that will be used from the Jetty Web Server
+httpPort = 8080
+
+/*
+
+Since we have made the web project depend on the utils project, when we fire the task "gradle assemble" we're able to build
+the entire Web Application.
+
+It's important to notice, how Gradle takes care of the dependencies by compiling the utils project first
+and then building out the web project. (specified into the settings.gradle)
+
+At this point in time, you should have a build folder inside your web folder.
+Go to the libs folder inside the build folder and you will find that the .war file has been generated for you.
+
+*/
